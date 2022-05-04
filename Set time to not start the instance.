@@ -1,0 +1,11 @@
+# Set current schedule
+def set_schedule(instance_id, schedule)
+  opsworks = Aws::OpsWorks::Client.new(
+    region: 'us-east-1',
+  )
+
+  resp = opsworks.set_time_based_auto_scaling({
+    instance_id: instance_id,
+    auto_scaling_schedule: schedule
+  })
+  
